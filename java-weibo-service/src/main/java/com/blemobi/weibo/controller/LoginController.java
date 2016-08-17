@@ -44,8 +44,12 @@ public class LoginController {
 
 		password = MD5.GetMD5Code(password + "3721");
 
-		List<NameValuePair> params = CommonUtil.createLoginParams(username, password);
-		String url = ClientUtil.createLoginUrl("/v1/login/login");
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("account", username));
+		params.add(new BasicNameValuePair("password", password));
+		params.add(new BasicNameValuePair("appid", "sep_web"));
+
+		String url = ClientUtil.createLoginUrl("/v1/login/account");
 		PMessage message = ClientUtil.getMethod(url, params, null);
 
 		String type = message.type;

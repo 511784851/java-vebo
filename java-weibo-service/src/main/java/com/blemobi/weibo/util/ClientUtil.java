@@ -182,58 +182,58 @@ public class ClientUtil {
 		return url.toString();
 	}
 
-	public static  String createLoginUrl(String basePath) {
-
-		return createUrl(loginAddress, loginPort, basePath);
-	}
-	
-	public static  String createNewsUrl(String basePath) {
-
-		return createUrl(newsAddress, newsPort, basePath);
-	}
-	
-	public static  String createOssUrl(String basePath) {
-
-		return createUrl(ossAddress, ossPort, basePath);
-	}
-	
-	public static  String createCommentUrl(String basePath) {
-
-		return createUrl(commentAddress, commentPort, basePath);
-	}
-	
-//	
 //	public static  String createLoginUrl(String basePath) {
-//		String[] loginInfo = Constant.getLoginServer();
-//		String address = loginInfo[0];
-//		int port = Integer.parseInt(loginInfo[1]);
 //
-//		return createUrl(address, port, basePath);
+//		return createUrl(loginAddress, loginPort, basePath);
 //	}
 //	
 //	public static  String createNewsUrl(String basePath) {
-//		String[] newsInfo = Constant.getNewsServer();
-//		String address = newsInfo[0];
-//		int port = Integer.parseInt(newsInfo[1]);
 //
-//		return createUrl(address, port, basePath);
+//		return createUrl(newsAddress, newsPort, basePath);
 //	}
 //	
 //	public static  String createOssUrl(String basePath) {
-//		String[] ossInfo = Constant.getOssServer();
-//		String address = ossInfo[0];
-//		int port = Integer.parseInt(ossInfo[1]);
 //
-//		return createUrl(address, port, basePath);
+//		return createUrl(ossAddress, ossPort, basePath);
 //	}
 //	
 //	public static  String createCommentUrl(String basePath) {
-//		String[] commentInfo = Constant.getCommentServer();
-//		String address = commentInfo[0];
-//		int port = Integer.parseInt(commentInfo[1]);
 //
-//		return createUrl(address, port, basePath);
+//		return createUrl(commentAddress, commentPort, basePath);
 //	}
+	
+	
+	public static  String createLoginUrl(String basePath) {
+		String[] loginInfo = Constant.getLoginServer();
+		String address = loginInfo[0];
+		int port = Integer.parseInt(loginInfo[1]);
+
+		return createUrl(address, port, basePath);
+	}
+	
+	public static  String createNewsUrl(String basePath) {
+		String[] newsInfo = Constant.getNewsServer();
+		String address = newsInfo[0];
+		int port = Integer.parseInt(newsInfo[1]);
+
+		return createUrl(address, port, basePath);
+	}
+	
+	public static  String createOssUrl(String basePath) {
+		String[] ossInfo = Constant.getOssServer();
+		String address = ossInfo[0];
+		int port = Integer.parseInt(ossInfo[1]);
+
+		return createUrl(address, port, basePath);
+	}
+	
+	public static  String createCommentUrl(String basePath) {
+		String[] commentInfo = Constant.getCommentServer();
+		String address = commentInfo[0];
+		int port = Integer.parseInt(commentInfo[1]);
+
+		return createUrl(address, port, basePath);
+	}
 	
 	/**
 	 * 闂佹眹鍨婚崰鎰板垂濮樿泛瀚夌�广儱鎳庨～銈夋煟閵娿儱鐎禦L

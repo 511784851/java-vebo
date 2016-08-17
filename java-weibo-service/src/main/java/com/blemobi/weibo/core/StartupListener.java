@@ -13,12 +13,12 @@ public class StartupListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 		long consulIntervalTime = Constant.getConsulIntervaltime();
 
-//		System.out.println("Starting Consul Server ...");
-//		ConsulManager.startService(new String[] { "-env", "test" }, consulIntervalTime);
-//
-//		ConsulManager.addConsulChangeListener(Constant.getAdapter());
+		System.out.println("Starting Consul Server ...");
+		ConsulManager.startService(new String[] { "-env", "test" }, consulIntervalTime);
 
-		// ConsulManager.addConsulChangeListener(AppKeys.getAdapter());
+		ConsulManager.addConsulChangeListener(Constant.getAdapter());
+
+		//ConsulManager.addConsulChangeListener(AppKeys.getAdapter());
 
 	}
 

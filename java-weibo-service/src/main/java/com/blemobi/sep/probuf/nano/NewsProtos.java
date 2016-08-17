@@ -159,9 +159,6 @@ public interface NewsProtos {
     // optional .common.PAudio audio = 9;
     public com.blemobi.sep.probuf.nano.NewsProtos.PAudio audio;
 
-    // optional bool onOSS = 10;
-    public boolean onOSS;
-
     // optional int64 pubishTime = 11;
     public long pubishTime;
 
@@ -189,6 +186,15 @@ public interface NewsProtos {
     // optional .common.PAtUserList atusers = 20;
     public com.blemobi.sep.probuf.nano.NewsProtos.PAtUserList atusers;
 
+    // optional bool IsDelete = 21;
+    public boolean isDelete;
+
+    // optional bool IsHide = 22;
+    public boolean isHide;
+
+    // optional .common.PRedPacketInfo RedPacket = 23;
+    public com.blemobi.sep.probuf.nano.WalletProtos.PRedPacketInfo redPacket;
+
     public PPostInfo() {
       clear();
     }
@@ -203,7 +209,6 @@ public interface NewsProtos {
       images = com.blemobi.sep.probuf.nano.NewsProtos.PImage.emptyArray();
       video = null;
       audio = null;
-      onOSS = false;
       pubishTime = 0L;
       position = "";
       self = false;
@@ -213,6 +218,9 @@ public interface NewsProtos {
       voteCnt = 0L;
       vote = false;
       atusers = null;
+      isDelete = false;
+      isHide = false;
+      redPacket = null;
       cachedSize = -1;
       return this;
     }
@@ -252,9 +260,6 @@ public interface NewsProtos {
       if (this.audio != null) {
         output.writeMessage(9, this.audio);
       }
-      if (this.onOSS != false) {
-        output.writeBool(10, this.onOSS);
-      }
       if (this.pubishTime != 0L) {
         output.writeInt64(11, this.pubishTime);
       }
@@ -281,6 +286,15 @@ public interface NewsProtos {
       }
       if (this.atusers != null) {
         output.writeMessage(20, this.atusers);
+      }
+      if (this.isDelete != false) {
+        output.writeBool(21, this.isDelete);
+      }
+      if (this.isHide != false) {
+        output.writeBool(22, this.isHide);
+      }
+      if (this.redPacket != null) {
+        output.writeMessage(23, this.redPacket);
       }
       super.writeTo(output);
     }
@@ -329,10 +343,6 @@ public interface NewsProtos {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
           .computeMessageSize(9, this.audio);
       }
-      if (this.onOSS != false) {
-        size += com.google.protobuf.nano.CodedOutputByteBufferNano
-            .computeBoolSize(10, this.onOSS);
-      }
       if (this.pubishTime != 0L) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeInt64Size(11, this.pubishTime);
@@ -368,6 +378,18 @@ public interface NewsProtos {
       if (this.atusers != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
           .computeMessageSize(20, this.atusers);
+      }
+      if (this.isDelete != false) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(21, this.isDelete);
+      }
+      if (this.isHide != false) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(22, this.isHide);
+      }
+      if (this.redPacket != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(23, this.redPacket);
       }
       return size;
     }
@@ -445,10 +467,6 @@ public interface NewsProtos {
             input.readMessage(this.audio);
             break;
           }
-          case 80: {
-            this.onOSS = input.readBool();
-            break;
-          }
           case 88: {
             this.pubishTime = input.readInt64();
             break;
@@ -486,6 +504,21 @@ public interface NewsProtos {
               this.atusers = new com.blemobi.sep.probuf.nano.NewsProtos.PAtUserList();
             }
             input.readMessage(this.atusers);
+            break;
+          }
+          case 168: {
+            this.isDelete = input.readBool();
+            break;
+          }
+          case 176: {
+            this.isHide = input.readBool();
+            break;
+          }
+          case 186: {
+            if (this.redPacket == null) {
+              this.redPacket = new com.blemobi.sep.probuf.nano.WalletProtos.PRedPacketInfo();
+            }
+            input.readMessage(this.redPacket);
             break;
           }
         }
@@ -1565,6 +1598,111 @@ public interface NewsProtos {
     }
   }
 
+  public static final class PPostRedpacket extends
+      com.google.protobuf.nano.MessageNano {
+
+    private static volatile PPostRedpacket[] _emptyArray;
+    public static PPostRedpacket[] emptyArray() {
+      // Lazily initializes the empty array
+      if (_emptyArray == null) {
+        synchronized (
+            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
+          if (_emptyArray == null) {
+            _emptyArray = new PPostRedpacket[0];
+          }
+        }
+      }
+      return _emptyArray;
+    }
+
+    // optional .common.PPostInfo Post = 1;
+    public com.blemobi.sep.probuf.nano.NewsProtos.PPostInfo post;
+
+    // optional .common.PSendRedPacket Redpacket = 2;
+    public com.blemobi.sep.probuf.nano.WalletProtos.PSendRedPacket redpacket;
+
+    public PPostRedpacket() {
+      clear();
+    }
+
+    public PPostRedpacket clear() {
+      post = null;
+      redpacket = null;
+      cachedSize = -1;
+      return this;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.post != null) {
+        output.writeMessage(1, this.post);
+      }
+      if (this.redpacket != null) {
+        output.writeMessage(2, this.redpacket);
+      }
+      super.writeTo(output);
+    }
+
+    @Override
+    protected int computeSerializedSize() {
+      int size = super.computeSerializedSize();
+      if (this.post != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(1, this.post);
+      }
+      if (this.redpacket != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(2, this.redpacket);
+      }
+      return size;
+    }
+
+    @Override
+    public PPostRedpacket mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 10: {
+            if (this.post == null) {
+              this.post = new com.blemobi.sep.probuf.nano.NewsProtos.PPostInfo();
+            }
+            input.readMessage(this.post);
+            break;
+          }
+          case 18: {
+            if (this.redpacket == null) {
+              this.redpacket = new com.blemobi.sep.probuf.nano.WalletProtos.PSendRedPacket();
+            }
+            input.readMessage(this.redpacket);
+            break;
+          }
+        }
+      }
+    }
+
+    public static PPostRedpacket parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new PPostRedpacket(), data);
+    }
+
+    public static PPostRedpacket parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new PPostRedpacket().mergeFrom(input);
+    }
+  }
+
   public static final class PRecommendUser extends
       com.google.protobuf.nano.MessageNano {
 
@@ -1917,6 +2055,9 @@ public interface NewsProtos {
     // optional int32 videoCnt = 7;
     public int videoCnt;
 
+    // optional string CommunityID = 8;
+    public java.lang.String communityID;
+
     public PPersonStatistic() {
       clear();
     }
@@ -1929,6 +2070,7 @@ public interface NewsProtos {
       imageCnt = 0;
       audioCnt = 0;
       videoCnt = 0;
+      communityID = "";
       cachedSize = -1;
       return this;
     }
@@ -1956,6 +2098,9 @@ public interface NewsProtos {
       }
       if (this.videoCnt != 0) {
         output.writeInt32(7, this.videoCnt);
+      }
+      if (!this.communityID.equals("")) {
+        output.writeString(8, this.communityID);
       }
       super.writeTo(output);
     }
@@ -1990,6 +2135,10 @@ public interface NewsProtos {
       if (this.videoCnt != 0) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeInt32Size(7, this.videoCnt);
+      }
+      if (!this.communityID.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(8, this.communityID);
       }
       return size;
     }
@@ -2035,6 +2184,10 @@ public interface NewsProtos {
           }
           case 56: {
             this.videoCnt = input.readInt32();
+            break;
+          }
+          case 66: {
+            this.communityID = input.readString();
             break;
           }
         }
