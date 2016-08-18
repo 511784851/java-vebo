@@ -287,6 +287,321 @@ public interface CommentProtos {
     }
   }
 
+  public static final class PCommentExt extends
+      com.google.protobuf.nano.MessageNano {
+
+    private static volatile PCommentExt[] _emptyArray;
+    public static PCommentExt[] emptyArray() {
+      // Lazily initializes the empty array
+      if (_emptyArray == null) {
+        synchronized (
+            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
+          if (_emptyArray == null) {
+            _emptyArray = new PCommentExt[0];
+          }
+        }
+      }
+      return _emptyArray;
+    }
+
+    // optional string id = 1;
+    public java.lang.String id;
+
+    // optional string uuid = 2;
+    public java.lang.String uuid;
+
+    // optional string nickname = 3;
+    public java.lang.String nickname;
+
+    // optional string headImgUrl = 4;
+    public java.lang.String headImgUrl;
+
+    // optional string atUuid = 5;
+    public java.lang.String atUuid;
+
+    // optional string atNickname = 6;
+    public java.lang.String atNickname;
+
+    // optional int32 level = 7;
+    public int level;
+
+    // optional bool isShield = 8;
+    public boolean isShield;
+
+    // optional int32 vote = 9;
+    public int vote;
+
+    // optional int32 children = 10;
+    public int children;
+
+    // optional int32 upvotes = 11;
+    public int upvotes;
+
+    // optional int32 downvotes = 12;
+    public int downvotes;
+
+    // optional int64 createTime = 13;
+    public long createTime;
+
+    // optional string text = 14;
+    public java.lang.String text;
+
+    // optional .common.PAudio audio = 15;
+    public com.blemobi.sep.probuf.nano.NewsProtos.PAudio audio;
+
+    // optional .common.PComment subComment = 16;
+    public com.blemobi.sep.probuf.nano.CommentProtos.PComment subComment;
+
+    public PCommentExt() {
+      clear();
+    }
+
+    public PCommentExt clear() {
+      id = "";
+      uuid = "";
+      nickname = "";
+      headImgUrl = "";
+      atUuid = "";
+      atNickname = "";
+      level = 0;
+      isShield = false;
+      vote = 0;
+      children = 0;
+      upvotes = 0;
+      downvotes = 0;
+      createTime = 0L;
+      text = "";
+      audio = null;
+      subComment = null;
+      cachedSize = -1;
+      return this;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (!this.id.equals("")) {
+        output.writeString(1, this.id);
+      }
+      if (!this.uuid.equals("")) {
+        output.writeString(2, this.uuid);
+      }
+      if (!this.nickname.equals("")) {
+        output.writeString(3, this.nickname);
+      }
+      if (!this.headImgUrl.equals("")) {
+        output.writeString(4, this.headImgUrl);
+      }
+      if (!this.atUuid.equals("")) {
+        output.writeString(5, this.atUuid);
+      }
+      if (!this.atNickname.equals("")) {
+        output.writeString(6, this.atNickname);
+      }
+      if (this.level != 0) {
+        output.writeInt32(7, this.level);
+      }
+      if (this.isShield != false) {
+        output.writeBool(8, this.isShield);
+      }
+      if (this.vote != 0) {
+        output.writeInt32(9, this.vote);
+      }
+      if (this.children != 0) {
+        output.writeInt32(10, this.children);
+      }
+      if (this.upvotes != 0) {
+        output.writeInt32(11, this.upvotes);
+      }
+      if (this.downvotes != 0) {
+        output.writeInt32(12, this.downvotes);
+      }
+      if (this.createTime != 0L) {
+        output.writeInt64(13, this.createTime);
+      }
+      if (!this.text.equals("")) {
+        output.writeString(14, this.text);
+      }
+      if (this.audio != null) {
+        output.writeMessage(15, this.audio);
+      }
+      if (this.subComment != null) {
+        output.writeMessage(16, this.subComment);
+      }
+      super.writeTo(output);
+    }
+
+    @Override
+    protected int computeSerializedSize() {
+      int size = super.computeSerializedSize();
+      if (!this.id.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(1, this.id);
+      }
+      if (!this.uuid.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(2, this.uuid);
+      }
+      if (!this.nickname.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(3, this.nickname);
+      }
+      if (!this.headImgUrl.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(4, this.headImgUrl);
+      }
+      if (!this.atUuid.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(5, this.atUuid);
+      }
+      if (!this.atNickname.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(6, this.atNickname);
+      }
+      if (this.level != 0) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(7, this.level);
+      }
+      if (this.isShield != false) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(8, this.isShield);
+      }
+      if (this.vote != 0) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(9, this.vote);
+      }
+      if (this.children != 0) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(10, this.children);
+      }
+      if (this.upvotes != 0) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(11, this.upvotes);
+      }
+      if (this.downvotes != 0) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(12, this.downvotes);
+      }
+      if (this.createTime != 0L) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt64Size(13, this.createTime);
+      }
+      if (!this.text.equals("")) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(14, this.text);
+      }
+      if (this.audio != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(15, this.audio);
+      }
+      if (this.subComment != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(16, this.subComment);
+      }
+      return size;
+    }
+
+    @Override
+    public PCommentExt mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 10: {
+            this.id = input.readString();
+            break;
+          }
+          case 18: {
+            this.uuid = input.readString();
+            break;
+          }
+          case 26: {
+            this.nickname = input.readString();
+            break;
+          }
+          case 34: {
+            this.headImgUrl = input.readString();
+            break;
+          }
+          case 42: {
+            this.atUuid = input.readString();
+            break;
+          }
+          case 50: {
+            this.atNickname = input.readString();
+            break;
+          }
+          case 56: {
+            this.level = input.readInt32();
+            break;
+          }
+          case 64: {
+            this.isShield = input.readBool();
+            break;
+          }
+          case 72: {
+            this.vote = input.readInt32();
+            break;
+          }
+          case 80: {
+            this.children = input.readInt32();
+            break;
+          }
+          case 88: {
+            this.upvotes = input.readInt32();
+            break;
+          }
+          case 96: {
+            this.downvotes = input.readInt32();
+            break;
+          }
+          case 104: {
+            this.createTime = input.readInt64();
+            break;
+          }
+          case 114: {
+            this.text = input.readString();
+            break;
+          }
+          case 122: {
+            if (this.audio == null) {
+              this.audio = new com.blemobi.sep.probuf.nano.NewsProtos.PAudio();
+            }
+            input.readMessage(this.audio);
+            break;
+          }
+          case 130: {
+            if (this.subComment == null) {
+              this.subComment = new com.blemobi.sep.probuf.nano.CommentProtos.PComment();
+            }
+            input.readMessage(this.subComment);
+            break;
+          }
+        }
+      }
+    }
+
+    public static PCommentExt parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new PCommentExt(), data);
+    }
+
+    public static PCommentExt parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new PCommentExt().mergeFrom(input);
+    }
+  }
+
   public static final class PCommentLevel extends
       com.google.protobuf.nano.MessageNano {
 
@@ -549,6 +864,116 @@ public interface CommentProtos {
             com.google.protobuf.nano.CodedInputByteBufferNano input)
         throws java.io.IOException {
       return new PCommentList().mergeFrom(input);
+    }
+  }
+
+  public static final class PCommentExtList extends
+      com.google.protobuf.nano.MessageNano {
+
+    private static volatile PCommentExtList[] _emptyArray;
+    public static PCommentExtList[] emptyArray() {
+      // Lazily initializes the empty array
+      if (_emptyArray == null) {
+        synchronized (
+            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
+          if (_emptyArray == null) {
+            _emptyArray = new PCommentExtList[0];
+          }
+        }
+      }
+      return _emptyArray;
+    }
+
+    // repeated .common.PCommentExt comments = 1;
+    public com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt[] comments;
+
+    public PCommentExtList() {
+      clear();
+    }
+
+    public PCommentExtList clear() {
+      comments = com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt.emptyArray();
+      cachedSize = -1;
+      return this;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.comments != null && this.comments.length > 0) {
+        for (int i = 0; i < this.comments.length; i++) {
+          com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt element = this.comments[i];
+          if (element != null) {
+            output.writeMessage(1, element);
+          }
+        }
+      }
+      super.writeTo(output);
+    }
+
+    @Override
+    protected int computeSerializedSize() {
+      int size = super.computeSerializedSize();
+      if (this.comments != null && this.comments.length > 0) {
+        for (int i = 0; i < this.comments.length; i++) {
+          com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt element = this.comments[i];
+          if (element != null) {
+            size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeMessageSize(1, element);
+          }
+        }
+      }
+      return size;
+    }
+
+    @Override
+    public PCommentExtList mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 10: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 10);
+            int i = this.comments == null ? 0 : this.comments.length;
+            com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt[] newArray =
+                new com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.comments, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = new com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt();
+              input.readMessage(newArray[i]);
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = new com.blemobi.sep.probuf.nano.CommentProtos.PCommentExt();
+            input.readMessage(newArray[i]);
+            this.comments = newArray;
+            break;
+          }
+        }
+      }
+    }
+
+    public static PCommentExtList parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new PCommentExtList(), data);
+    }
+
+    public static PCommentExtList parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new PCommentExtList().mergeFrom(input);
     }
   }
 

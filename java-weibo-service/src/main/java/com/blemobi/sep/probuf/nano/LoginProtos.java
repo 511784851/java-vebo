@@ -37,11 +37,8 @@ public interface LoginProtos {
     // optional string imgURL = 9;
     public java.lang.String imgURL;
 
-    // optional int64 chatid = 10;
-    public long chatid;
-
-    // repeated int32 loginTypes = 11;
-    public int[] loginTypes;
+    // optional .common.PInt32List loginTypes = 11;
+    public com.blemobi.sep.probuf.nano.ResultProtos.PInt32List loginTypes;
 
     // optional .common.PLevelInfo levelInfo = 12;
     public com.blemobi.sep.probuf.nano.AccountProtos.PLevelInfo levelInfo;
@@ -56,8 +53,7 @@ public interface LoginProtos {
       token = "";
       nickname = "";
       imgURL = "";
-      chatid = 0L;
-      loginTypes = com.google.protobuf.nano.WireFormatNano.EMPTY_INT_ARRAY;
+      loginTypes = null;
       levelInfo = null;
       cachedSize = -1;
       return this;
@@ -81,13 +77,8 @@ public interface LoginProtos {
       if (!this.imgURL.equals("")) {
         output.writeString(9, this.imgURL);
       }
-      if (this.chatid != 0L) {
-        output.writeInt64(10, this.chatid);
-      }
-      if (this.loginTypes != null && this.loginTypes.length > 0) {
-        for (int i = 0; i < this.loginTypes.length; i++) {
-          output.writeInt32(11, this.loginTypes[i]);
-        }
+      if (this.loginTypes != null) {
+        output.writeMessage(11, this.loginTypes);
       }
       if (this.levelInfo != null) {
         output.writeMessage(12, this.levelInfo);
@@ -118,19 +109,9 @@ public interface LoginProtos {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(9, this.imgURL);
       }
-      if (this.chatid != 0L) {
+      if (this.loginTypes != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
-            .computeInt64Size(10, this.chatid);
-      }
-      if (this.loginTypes != null && this.loginTypes.length > 0) {
-        int dataSize = 0;
-        for (int i = 0; i < this.loginTypes.length; i++) {
-          int element = this.loginTypes[i];
-          dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
-              .computeInt32SizeNoTag(element);
-        }
-        size += dataSize;
-        size += 1 * this.loginTypes.length;
+          .computeMessageSize(11, this.loginTypes);
       }
       if (this.levelInfo != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
@@ -174,48 +155,11 @@ public interface LoginProtos {
             this.imgURL = input.readString();
             break;
           }
-          case 80: {
-            this.chatid = input.readInt64();
-            break;
-          }
-          case 88: {
-            int arrayLength = com.google.protobuf.nano.WireFormatNano
-                .getRepeatedFieldArrayLength(input, 88);
-            int i = this.loginTypes == null ? 0 : this.loginTypes.length;
-            int[] newArray = new int[i + arrayLength];
-            if (i != 0) {
-              java.lang.System.arraycopy(this.loginTypes, 0, newArray, 0, i);
-            }
-            for (; i < newArray.length - 1; i++) {
-              newArray[i] = input.readInt32();
-              input.readTag();
-            }
-            // Last one without readTag.
-            newArray[i] = input.readInt32();
-            this.loginTypes = newArray;
-            break;
-          }
           case 90: {
-            int length = input.readRawVarint32();
-            int limit = input.pushLimit(length);
-            // First pass to compute array length.
-            int arrayLength = 0;
-            int startPos = input.getPosition();
-            while (input.getBytesUntilLimit() > 0) {
-              input.readInt32();
-              arrayLength++;
+            if (this.loginTypes == null) {
+              this.loginTypes = new com.blemobi.sep.probuf.nano.ResultProtos.PInt32List();
             }
-            input.rewindToPosition(startPos);
-            int i = this.loginTypes == null ? 0 : this.loginTypes.length;
-            int[] newArray = new int[i + arrayLength];
-            if (i != 0) {
-              java.lang.System.arraycopy(this.loginTypes, 0, newArray, 0, i);
-            }
-            for (; i < newArray.length; i++) {
-              newArray[i] = input.readInt32();
-            }
-            this.loginTypes = newArray;
-            input.popLimit(limit);
+            input.readMessage(this.loginTypes);
             break;
           }
           case 98: {
@@ -238,345 +182,6 @@ public interface LoginProtos {
             com.google.protobuf.nano.CodedInputByteBufferNano input)
         throws java.io.IOException {
       return new PLogin().mergeFrom(input);
-    }
-  }
-
-  public static final class PLoginType extends
-      com.google.protobuf.nano.MessageNano {
-
-    private static volatile PLoginType[] _emptyArray;
-    public static PLoginType[] emptyArray() {
-      // Lazily initializes the empty array
-      if (_emptyArray == null) {
-        synchronized (
-            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
-          if (_emptyArray == null) {
-            _emptyArray = new PLoginType[0];
-          }
-        }
-      }
-      return _emptyArray;
-    }
-
-    // repeated int32 types = 2;
-    public int[] types;
-
-    public PLoginType() {
-      clear();
-    }
-
-    public PLoginType clear() {
-      types = com.google.protobuf.nano.WireFormatNano.EMPTY_INT_ARRAY;
-      cachedSize = -1;
-      return this;
-    }
-
-    @Override
-    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
-        throws java.io.IOException {
-      if (this.types != null && this.types.length > 0) {
-        for (int i = 0; i < this.types.length; i++) {
-          output.writeInt32(2, this.types[i]);
-        }
-      }
-      super.writeTo(output);
-    }
-
-    @Override
-    protected int computeSerializedSize() {
-      int size = super.computeSerializedSize();
-      if (this.types != null && this.types.length > 0) {
-        int dataSize = 0;
-        for (int i = 0; i < this.types.length; i++) {
-          int element = this.types[i];
-          dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
-              .computeInt32SizeNoTag(element);
-        }
-        size += dataSize;
-        size += 1 * this.types.length;
-      }
-      return size;
-    }
-
-    @Override
-    public PLoginType mergeFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      while (true) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            return this;
-          default: {
-            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
-              return this;
-            }
-            break;
-          }
-          case 16: {
-            int arrayLength = com.google.protobuf.nano.WireFormatNano
-                .getRepeatedFieldArrayLength(input, 16);
-            int i = this.types == null ? 0 : this.types.length;
-            int[] newArray = new int[i + arrayLength];
-            if (i != 0) {
-              java.lang.System.arraycopy(this.types, 0, newArray, 0, i);
-            }
-            for (; i < newArray.length - 1; i++) {
-              newArray[i] = input.readInt32();
-              input.readTag();
-            }
-            // Last one without readTag.
-            newArray[i] = input.readInt32();
-            this.types = newArray;
-            break;
-          }
-          case 18: {
-            int length = input.readRawVarint32();
-            int limit = input.pushLimit(length);
-            // First pass to compute array length.
-            int arrayLength = 0;
-            int startPos = input.getPosition();
-            while (input.getBytesUntilLimit() > 0) {
-              input.readInt32();
-              arrayLength++;
-            }
-            input.rewindToPosition(startPos);
-            int i = this.types == null ? 0 : this.types.length;
-            int[] newArray = new int[i + arrayLength];
-            if (i != 0) {
-              java.lang.System.arraycopy(this.types, 0, newArray, 0, i);
-            }
-            for (; i < newArray.length; i++) {
-              newArray[i] = input.readInt32();
-            }
-            this.types = newArray;
-            input.popLimit(limit);
-            break;
-          }
-        }
-      }
-    }
-
-    public static PLoginType parseFrom(byte[] data)
-        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
-      return com.google.protobuf.nano.MessageNano.mergeFrom(new PLoginType(), data);
-    }
-
-    public static PLoginType parseFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      return new PLoginType().mergeFrom(input);
-    }
-  }
-
-  public static final class PRUsername extends
-      com.google.protobuf.nano.MessageNano {
-
-    private static volatile PRUsername[] _emptyArray;
-    public static PRUsername[] emptyArray() {
-      // Lazily initializes the empty array
-      if (_emptyArray == null) {
-        synchronized (
-            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
-          if (_emptyArray == null) {
-            _emptyArray = new PRUsername[0];
-          }
-        }
-      }
-      return _emptyArray;
-    }
-
-    // repeated string names = 2;
-    public java.lang.String[] names;
-
-    public PRUsername() {
-      clear();
-    }
-
-    public PRUsername clear() {
-      names = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
-      cachedSize = -1;
-      return this;
-    }
-
-    @Override
-    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
-        throws java.io.IOException {
-      if (this.names != null && this.names.length > 0) {
-        for (int i = 0; i < this.names.length; i++) {
-          java.lang.String element = this.names[i];
-          if (element != null) {
-            output.writeString(2, element);
-          }
-        }
-      }
-      super.writeTo(output);
-    }
-
-    @Override
-    protected int computeSerializedSize() {
-      int size = super.computeSerializedSize();
-      if (this.names != null && this.names.length > 0) {
-        int dataCount = 0;
-        int dataSize = 0;
-        for (int i = 0; i < this.names.length; i++) {
-          java.lang.String element = this.names[i];
-          if (element != null) {
-            dataCount++;
-            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
-                .computeStringSizeNoTag(element);
-          }
-        }
-        size += dataSize;
-        size += 1 * dataCount;
-      }
-      return size;
-    }
-
-    @Override
-    public PRUsername mergeFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      while (true) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            return this;
-          default: {
-            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
-              return this;
-            }
-            break;
-          }
-          case 18: {
-            int arrayLength = com.google.protobuf.nano.WireFormatNano
-                .getRepeatedFieldArrayLength(input, 18);
-            int i = this.names == null ? 0 : this.names.length;
-            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
-            if (i != 0) {
-              java.lang.System.arraycopy(this.names, 0, newArray, 0, i);
-            }
-            for (; i < newArray.length - 1; i++) {
-              newArray[i] = input.readString();
-              input.readTag();
-            }
-            // Last one without readTag.
-            newArray[i] = input.readString();
-            this.names = newArray;
-            break;
-          }
-        }
-      }
-    }
-
-    public static PRUsername parseFrom(byte[] data)
-        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
-      return com.google.protobuf.nano.MessageNano.mergeFrom(new PRUsername(), data);
-    }
-
-    public static PRUsername parseFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      return new PRUsername().mergeFrom(input);
-    }
-  }
-
-  public static final class PToken extends
-      com.google.protobuf.nano.MessageNano {
-
-    private static volatile PToken[] _emptyArray;
-    public static PToken[] emptyArray() {
-      // Lazily initializes the empty array
-      if (_emptyArray == null) {
-        synchronized (
-            com.google.protobuf.nano.InternalNano.LAZY_INIT_LOCK) {
-          if (_emptyArray == null) {
-            _emptyArray = new PToken[0];
-          }
-        }
-      }
-      return _emptyArray;
-    }
-
-    // optional string SaltMD5 = 2;
-    public java.lang.String saltMD5;
-
-    // optional int64 CreateTime = 3;
-    public long createTime;
-
-    public PToken() {
-      clear();
-    }
-
-    public PToken clear() {
-      saltMD5 = "";
-      createTime = 0L;
-      cachedSize = -1;
-      return this;
-    }
-
-    @Override
-    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
-        throws java.io.IOException {
-      if (!this.saltMD5.equals("")) {
-        output.writeString(2, this.saltMD5);
-      }
-      if (this.createTime != 0L) {
-        output.writeInt64(3, this.createTime);
-      }
-      super.writeTo(output);
-    }
-
-    @Override
-    protected int computeSerializedSize() {
-      int size = super.computeSerializedSize();
-      if (!this.saltMD5.equals("")) {
-        size += com.google.protobuf.nano.CodedOutputByteBufferNano
-            .computeStringSize(2, this.saltMD5);
-      }
-      if (this.createTime != 0L) {
-        size += com.google.protobuf.nano.CodedOutputByteBufferNano
-            .computeInt64Size(3, this.createTime);
-      }
-      return size;
-    }
-
-    @Override
-    public PToken mergeFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      while (true) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            return this;
-          default: {
-            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
-              return this;
-            }
-            break;
-          }
-          case 18: {
-            this.saltMD5 = input.readString();
-            break;
-          }
-          case 24: {
-            this.createTime = input.readInt64();
-            break;
-          }
-        }
-      }
-    }
-
-    public static PToken parseFrom(byte[] data)
-        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
-      return com.google.protobuf.nano.MessageNano.mergeFrom(new PToken(), data);
-    }
-
-    public static PToken parseFrom(
-            com.google.protobuf.nano.CodedInputByteBufferNano input)
-        throws java.io.IOException {
-      return new PToken().mergeFrom(input);
     }
   }
 }
