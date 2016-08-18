@@ -188,7 +188,8 @@ public class NewsController {
 		//params.add(new BasicNameValuePair("uuid", uuid));
 		params.add(new BasicNameValuePair("count", "10"));
 		params.add(new BasicNameValuePair("offset", offset));
-
+		params.add(new BasicNameValuePair("type", "all"));
+		
 		String url = ClientUtil.createNewsUrl("/v1/news/collect");
 		PMessage message = ClientUtil.getMethod(url, params, cookies);
 		PResult result = PResult.parseFrom(message.data);
@@ -231,8 +232,12 @@ public class NewsController {
 
 		Cookie[] cookies = CommonUtil.createLoginCookieParams(uuid, token);
 
-		String url = ClientUtil.createNewsUrl("/v1/news/collect?oper=1&postid="+id);
-		PMessage message = ClientUtil.postMethod(url, null, cookies);
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("oper", "1"));
+		params.add(new BasicNameValuePair("postids", id+""));
+
+		String url = ClientUtil.createNewsUrl("/v1/news/collect");
+		PMessage message = ClientUtil.postMethod(url, params, cookies);
 
 		PResult result = PResult.parseFrom(message.data);
 		if (result.errorCode == 0) {// ok
@@ -263,8 +268,12 @@ public class NewsController {
 
 		Cookie[] cookies = CommonUtil.createLoginCookieParams(uuid, token);
 
-		String url = ClientUtil.createNewsUrl("/v1/news/collect?oper=0&postid="+id);
-		PMessage message = ClientUtil.postMethod(url, null, cookies);
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair("oper", "0"));
+		params.add(new BasicNameValuePair("postids", id+""));
+
+		String url = ClientUtil.createNewsUrl("/v1/news/collect");
+		PMessage message = ClientUtil.postMethod(url, params, cookies);
 
 		PResult result = PResult.parseFrom(message.data);
 		if (result.errorCode == 0) {// ok

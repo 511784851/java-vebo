@@ -82,8 +82,8 @@ public class LoginController {
 
 		Cookie[] cookies = CommonUtil.createLoginCookieParams(uuid, token);
 
-		String url = ClientUtil.createLoginUrl("/v1/login/logout");
-		PMessage message = ClientUtil.getMethod(url, null, cookies);
+		String url = ClientUtil.createLoginUrl("/v1/login/session");
+		PMessage message = ClientUtil.deleteMethod(url, null, cookies);
 
 		PResult result = PResult.parseFrom(message.data);
 		if (result.errorCode == 0) {// ok
